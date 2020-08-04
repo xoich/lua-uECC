@@ -9,7 +9,6 @@ static int luECC_keygen(lua_State *L) {
     uECC_Curve curve = luaL_checkudata(L, 1, "uECC_curve");
     luaL_Buffer bpk, bsk;
     size_t curve_size = uECC_curve_private_key_size(curve);
-    assert(curve_size == 24);
     uint8_t* pk = (uint8_t*)luaL_buffinitsize(L, &bpk, curve_size * 2);
     uint8_t* sk = (uint8_t*)luaL_buffinitsize(L, &bsk, curve_size);
     uECC_make_key(pk, sk, curve);
